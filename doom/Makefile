@@ -5,7 +5,7 @@ SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
 OBJ_NAME = play
 INCLUDE_PATHS = -Iinclude/SDL2
 LIBRARY_PATHS = -Llib/SDL2
-COMPILER_FLAGS = -std=c17 -Wall -Wextra -Werror
+COMPILER_FLAGS = -std=c17 -Wall -Wextra -Werror -O0 -g
 LINKER_FLAGS = -lsdl2
 
 all:
