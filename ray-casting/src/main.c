@@ -8,7 +8,7 @@
 #define MAP_HEIGHT 8
 #define MAP_WIDTH 8
 #define FOV 45
-#define PLAYER_SPEED 0.06f
+#define PLAYER_SPEED 0.04f
 #define DEG_TO_RAD(degrees) ((degrees) * M_PI / 180.0)
 #define NEG_VEC(v2)
 
@@ -42,7 +42,7 @@ static u8 MAPDATA[MAP_HEIGHT * MAP_WIDTH] = {
   1, 0, 2, 2, 0, 0, 0, 1,
   1, 0, 0, 0, 0, 0, 0, 1,
   1, 0, 0, 0, 0, 0, 0, 1, // Here
-  1, 0, 0, 0, 0, 0, 0, 1,
+  1, 0, 2, 0, 0, 0, 0, 1,
   1, 0, 0, 0, 0, 0, 0, 1,
   1, 1, 1, 1, 1, 1, 1, 1,
 };
@@ -274,12 +274,17 @@ int main() {
       state.player.pos.y += state.player.dir.y * PLAYER_SPEED;
     }
 
+    if (keystate[SDL_SCANCODE_DOWN]) {
+      state.player.pos.x -= state.player.dir.x * PLAYER_SPEED;
+      state.player.pos.y -= state.player.dir.y * PLAYER_SPEED;
+    }
+
     if (keystate[SDL_SCANCODE_LEFT]) {
-      state.player.dir = rotate_vector(state.player.dir, (f32) DEG_TO_RAD(-2));
+      state.player.dir = rotate_vector(state.player.dir, (f32) DEG_TO_RAD(-1.5));
     }
 
     if (keystate[SDL_SCANCODE_RIGHT]) {
-      state.player.dir = rotate_vector(state.player.dir, (f32) DEG_TO_RAD(2));
+      state.player.dir = rotate_vector(state.player.dir, (f32) DEG_TO_RAD(1.5));
     }
 
 
